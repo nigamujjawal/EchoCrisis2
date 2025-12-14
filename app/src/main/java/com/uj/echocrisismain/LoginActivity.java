@@ -83,6 +83,8 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     } else {
                         Log.d(TAG, "Google Sign-In cancelled or failed with result code: " + result.getResultCode());
+                        Toast.makeText(this, "Sign-In Cancelled or Failed (Code: " + result.getResultCode() + ")",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -125,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(String idToken) {
-        Toast.makeText(this, "Authenticating with Google...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Authenticating with Firebase...", Toast.LENGTH_SHORT).show();
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
@@ -138,7 +140,9 @@ public class LoginActivity extends AppCompatActivity {
                     } else {
                         // If sign in fails, display a message to the user.
                         Log.w(TAG, "signInWithCredential:failure", task.getException());
-                        Toast.makeText(this, "Authentication Failed.", Toast.LENGTH_SHORT).show();
+                        String errorMsg = "Auth Failed: "
+                                + (task.getException() != null ? task.getException().getMessage() : "Unknown error");
+                        Toast.makeText(this, errorMsg, Toast.LENGTH_LONG).show();
                         updateUI(null);
                     }
                 });
