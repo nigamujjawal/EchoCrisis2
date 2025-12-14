@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.uj.echocrisismain">
+
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
+        android:name=".EchoCrisisApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="EchoCrisis"
@@ -14,72 +18,90 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EchoCrisis">
+
+        <!-- Help Activities -->
         <activity
             android:name=".MedicalHelpActivity"
             android:exported="false" />
+
         <activity
             android:name=".InsuranceClaimActivity"
             android:exported="false" />
+
         <activity
             android:name=".BankingHelpActivity"
             android:exported="false" />
+
         <activity
             android:name=".FinancialHelpActivity"
             android:exported="false" />
 
-        <!-- Welcome Screen (after login) -->
+        <!-- Welcome / Navigation -->
         <activity
             android:name=".WelcomeActivity"
-            android:exported="false" /> <!-- Government Schemes Screen -->
+            android:exported="false" />
+
         <activity
             android:name=".SchemeActivity"
             android:exported="false"
-            android:label="Government Schemes" /> <!-- Chat Activity -->
+            android:label="Government Schemes" />
+
         <activity
             android:name=".ChatActivity"
-            android:exported="false" /> <!-- Login Activity (Launcher) -->
+            android:exported="false" />
+
+        <!-- Login (Launcher Activity) -->
         <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Register/Profile Setup/Profile View -->
+        </activity>
+
+        <!-- User Profile -->
         <activity
             android:name=".RegisterActivity"
             android:exported="false"
             android:label="Register" />
+
         <activity
             android:name=".ProfileSetupActivity"
             android:exported="false"
             android:label="Profile Setup" />
+
         <activity
             android:name=".ProfileActivity"
             android:exported="false"
-            android:label="Profile" /> <!-- Intermediate Welcome (if used) -->
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false"
-            android:label="Welcome" /> <!-- Dashboard (with 4 buttons) -->
+            android:label="Profile" />
+
+        <!-- Dashboard -->
         <activity
             android:name=".DashboardActivity"
             android:exported="false"
-            android:label="Dashboard" /> <!-- 4 Button Target Screens -->
+            android:label="Dashboard" />
+
+        <!-- Emergency Contacts Management -->
         <activity
-            android:name=".MentalSupportActivity"
+            android:name=".EmergencyContactsActivity"
             android:exported="false"
-            android:label="Mental Support" />
+            android:label="Emergency Contacts" />
+
+        <!-- Support Screens -->
+
+
         <activity
             android:name=".LegalHelpActivity"
             android:exported="false"
             android:label="Legal Help" />
+
         <activity
             android:name=".ShelterActivity"
             android:exported="false"
             android:label="Nearby Shelters" />
+
     </application>
 
 </manifest>

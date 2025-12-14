@@ -1,79 +1,76 @@
 package com.uj.echocrisismain;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView tvName, tvPhone, tvEmail, tvDOB, tvLocation, tvState,
-            tvCrisisType, tvRecoveryStage, tvOccupation, tvMedicalNeeds,
-            tvGender, tvUrgentHelp;
+    private EditText etEmergencyContact;
+    private Button btnSaveEmergency;
+
+    private static final String PREF_NAME = "sos_prefs";
+    private static final String KEY_EMERGENCY = "emergency_number";
+
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_profile); // same layout reuse
 
-        // Initialize views
-        tvName = findViewById(R.id.tvName);
-        tvPhone = findViewById(R.id.tvPhone);
-        tvEmail = findViewById(R.id.tvEmail);
-        tvDOB = findViewById(R.id.tvDOB);
-        tvLocation = findViewById(R.id.tvLocation);
-        tvState = findViewById(R.id.tvState);
-        tvCrisisType = findViewById(R.id.tvCrisisType);
-        tvRecoveryStage = findViewById(R.id.tvRecoveryStage);
-        tvOccupation = findViewById(R.id.tvOccupation);
-        tvMedicalNeeds = findViewById(R.id.tvMedicalNeeds);
-        tvGender = findViewById(R.id.tvGender);
-        tvUrgentHelp = findViewById(R.id.tvUrgentHelp);
+        mAuth = FirebaseAuth.getInstance();
 
-        // Load profile from Firebase
-        loadUserProfile();
+        etEmergencyContact = findViewById(R.id.etEmergencyContact);
+        btnSaveEmergency = findViewById(R.id.btnSaveEmergency);
+
+        SharedPreferences prefs = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        etEmergencyContact.setText(prefs.getString(KEY_EMERGENCY, ""));
+
+        btnSaveEmergency.setOnClickListener(v -> saveEmergency());
     }
 
-    private void loadUserProfile() {
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid);
+    private void saveEmergency() {
+        String number = etEmergencyContact.getText().toString().trim();
 
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    UserProfile profile = snapshot.getValue(UserProfile.class);
-                    if (profile != null) {
-                        tvName.setText(profile.name);
-                        tvPhone.setText(profile.phone);
-                        tvEmail.setText(profile.email);
-                        tvDOB.setText(profile.dob);
-                        tvLocation.setText(profile.location);
-                        tvState.setText(profile.state);
-                        tvCrisisType.setText(profile.crisisType);
-                        tvRecoveryStage.setText(profile.recoveryStage);
-                        tvOccupation.setText(profile.occupation);
-                        tvMedicalNeeds.setText(profile.medicalNeeds);
-                        tvGender.setText(profile.gender);
-                        tvUrgentHelp.setText(profile.urgentHelp ? "Yes" : "No");
-                    }
-                } else {
-                    Toast.makeText(ProfileActivity.this, "Profile not found", Toast.LENGTH_SHORT).show();
-                }
-            }
+        if (number.isEmpty() || number.length() < 5) {
+            Toast.makeText(this, "Valid emergency number daalo", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-            @Override
-            public void onCancelled(DatabaseError error) {
-                Toast.makeText(ProfileActivity.this, "Error loading profile", Toast.LENGTH_SHORT).show();
-            }
-        });
+        // Save locally
+        getSharedPreferences(PREF_NAME, MODE_PRIVATE)
+                .edit()
+                .putString(KEY_EMERGENCY, number)
+                .apply();
+
+        // Save to Firestore if user exists
+        if (mAuth.getCurrentUser() != null) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("emergency_number", number);
+
+            FirebaseFirestore.getInstance()
+                    .collection("users")
+                    .document(mAuth.getCurrentUser().getUid())
+                    .set(map, SetOptions.merge());
+        }
+
+        Toast.makeText(this, "Emergency number saved", Toast.LENGTH_SHORT).show();
+
+        // 👉 Setup completed → go to Login
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
     }
 }

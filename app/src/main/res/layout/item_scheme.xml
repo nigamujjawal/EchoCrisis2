@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:padding="10dp"
+    android:layout_marginBottom="8dp"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/schemeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scheme Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/schemeDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scheme description..."
+        android:layout_marginTop="4dp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/schemeEligibility"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eligibility..."
+        android:layout_marginTop="4dp"
+        android:textStyle="italic"
+        android:textSize="13sp" />
+
+    <!-- ✅ New clickable link -->
+    <TextView
+        android:id="@+id/schemeLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://example.com"
+        android:textColor="@android:color/holo_blue_dark"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:clickable="true"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp" />
+
+</LinearLayout>

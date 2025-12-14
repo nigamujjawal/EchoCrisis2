@@ -58,4 +58,7 @@
         <item>Female</item>
         <item>Other</item>
     </string-array>
+
+    <!-- Google Sign-In Web Client ID -->
+    <string name="default_web_client_id">390265960050-oaf682tlkhf094o1kre0sjdn07gghh3s.apps.googleusercontent.com</string>
 </resources>

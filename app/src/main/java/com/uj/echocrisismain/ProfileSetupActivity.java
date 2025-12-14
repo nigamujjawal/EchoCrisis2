@@ -3,6 +3,7 @@ package com.uj.echocrisismain;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,16 +23,15 @@ public class ProfileSetupActivity extends AppCompatActivity {
     Button btnSaveProfile;
 
     FirebaseFirestore db;
+    private static final String TAG = "ProfileSetupActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
-        // Initialize Firebase Firestore
         db = FirebaseFirestore.getInstance();
 
-        // Initialize Views
         etName = findViewById(R.id.etName);
         etPhone = findViewById(R.id.etPhone);
         etEmail = findViewById(R.id.etEmail);
@@ -46,72 +46,61 @@ public class ProfileSetupActivity extends AppCompatActivity {
         checkUrgentHelp = findViewById(R.id.checkUrgentHelp);
         btnSaveProfile = findViewById(R.id.btnSaveProfile);
 
-        // Set Gender Options
-        ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(this,
-                R.array.gender_array, android.R.layout.simple_spinner_item);
-        genderAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerGender.setAdapter(genderAdapter);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+                this, R.array.gender_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGender.setAdapter(adapter);
 
-        // Date Picker
         etDOB.setOnClickListener(v -> showDatePicker());
-
-        // Save Profile
         btnSaveProfile.setOnClickListener(v -> saveProfileData());
     }
 
     private void showDatePicker() {
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (view, selectedYear, selectedMonth, selectedDay) -> {
-                    String date = selectedDay + "/" + (selectedMonth + 1) + "/" + selectedYear;
-                    etDOB.setText(date);
-                }, year, month, day);
-        datePickerDialog.show();
+        Calendar cal = Calendar.getInstance();
+        new DatePickerDialog(this,
+                (view, y, m, d) -> etDOB.setText(d + "/" + (m + 1) + "/" + y),
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void saveProfileData() {
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser == null) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
             Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String uid = firebaseUser.getUid();
+        String uid = user.getUid();
 
         UserProfile profile = new UserProfile(
-                etName.getText().toString(),
-                etPhone.getText().toString(),
-                etEmail.getText().toString(),
-                etDOB.getText().toString(),
+                etName.getText().toString().trim(),
+                etPhone.getText().toString().trim(),
+                etEmail.getText().toString().trim(),
+                etDOB.getText().toString().trim(),
                 spinnerGender.getSelectedItem().toString(),
-                etLocation.getText().toString(),
-                etState.getText().toString(),
-                etCrisisType.getText().toString(),
-                etRecoveryStage.getText().toString(),
-                etOccupation.getText().toString(),
-                etMedicalNeeds.getText().toString(),
+                etLocation.getText().toString().trim(),
+                etState.getText().toString().trim(),
+                etCrisisType.getText().toString().trim(),
+                etRecoveryStage.getText().toString().trim(),
+                etOccupation.getText().toString().trim(),
+                etMedicalNeeds.getText().toString().trim(),
                 checkUrgentHelp.isChecked()
         );
 
-        db.collection("users").document(uid).set(profile)
-                .addOnSuccessListener(aVoid -> {
-                    Toast.makeText(this, "Profile saved successfully", Toast.LENGTH_SHORT).show();
+        db.collection("users").document(uid)
+                .set(profile)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(this, "Profile saved", Toast.LENGTH_SHORT).show();
 
-                    // Sign out current user to force login again
-                    FirebaseAuth.getInstance().signOut();
-
-                    // Go to LoginActivity
-                    Intent intent = new Intent(ProfileSetupActivity.this, LoginActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    // ✅ NEXT: Emergency Number Screen
+                    Intent intent = new Intent(this, ProfileActivity.class);
                     startActivity(intent);
                     finish();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Failed to save profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Profile save failed", e);
+                    Toast.makeText(this, "Failed to save profile", Toast.LENGTH_SHORT).show();
                 });
     }
 }

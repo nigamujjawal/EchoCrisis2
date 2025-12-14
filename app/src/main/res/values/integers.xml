@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Restored valid integers resource file to avoid SAX parse errors.
+         Add integer resources here as needed by the app. Example below. -->
+    <integer name="default_timeout_seconds">30</integer>
+</resources>
+

@@ -1,132 +1,341 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp"
+    android:background="@color/background"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:paddingTop="80dp"> <!-- Added top padding -->
+        android:orientation="vertical">
 
-        <!-- Heading -->
-        <TextView
-            android:text="Complete Your Profile"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <!-- Full Name -->
-        <EditText
-            android:id="@+id/etName"
+        <!-- Header -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name" />
+            android:orientation="vertical"
+            android:background="@drawable/gradient_bg_dark"
+            android:paddingTop="24dp"
+            android:paddingBottom="32dp"
+            android:paddingHorizontal="24dp">
 
-        <!-- Phone -->
-        <EditText
-            android:id="@+id/etPhone"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Complete Your Profile"
+                style="@style/HeadingTextLight"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Help us personalize your experience"
+                style="@style/SubheadingTextLight" />
+
+        </LinearLayout>
+
+        <!-- Form Content -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:inputType="phone"
-            android:layout_marginTop="10dp" />
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginTop="-16dp">
 
-        <!-- Email -->
-        <EditText
-            android:id="@+id/etEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
-            android:layout_marginTop="10dp" />
+            <!-- Personal Information Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background">
 
-        <!-- Gender -->
-        <Spinner
-            android:id="@+id/spinnerGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-        <!-- DOB -->
-        <EditText
-            android:id="@+id/etDOB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Date of Birth"
-            android:focusable="false"
-            android:layout_marginTop="10dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Information"
+                        style="@style/SectionHeader"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/primary" />
 
-        <!-- Location -->
-        <EditText
-            android:id="@+id/etLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="City or Area"
-            android:layout_marginTop="10dp" />
+                    <!-- Full Name -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Full Name"
+                        style="@style/TextLabel"
+                        android:layout_marginBottom="6dp" />
 
-        <!-- State -->
-        <EditText
-            android:id="@+id/etState"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="State"
-            android:layout_marginTop="10dp" />
+                    <EditText
+                        android:id="@+id/etName"
+                        style="@style/InputField"
+                        android:hint="Enter your full name" />
 
-        <!-- Crisis Type -->
-        <EditText
-            android:id="@+id/etCrisisType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Type of Crisis"
-            android:layout_marginTop="10dp" />
+                    <!-- Phone -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone Number"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
 
-        <!-- Recovery Stage -->
-        <EditText
-            android:id="@+id/etRecoveryStage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Recovery Stage"
-            android:layout_marginTop="10dp" />
+                    <EditText
+                        android:id="@+id/etPhone"
+                        style="@style/InputField"
+                        android:hint="Enter phone number"
+                        android:inputType="phone" />
 
-        <!-- Occupation -->
-        <EditText
-            android:id="@+id/etOccupation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Occupation"
-            android:layout_marginTop="10dp" />
+                    <!-- Email -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
 
-        <!-- Medical Needs -->
-        <EditText
-            android:id="@+id/etMedicalNeeds"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Medical Needs / Disabilities"
-            android:layout_marginTop="10dp" />
+                    <EditText
+                        android:id="@+id/etEmail"
+                        style="@style/InputField"
+                        android:hint="Enter email address"
+                        android:inputType="textEmailAddress" />
 
-        <!-- Urgent Help -->
-        <CheckBox
-            android:id="@+id/checkUrgentHelp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="I need urgent help"
-            android:layout_marginTop="15dp" />
+                    <!-- Gender -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
 
-        <!-- Save Button -->
-        <Button
-            android:id="@+id/btnSaveProfile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save Profile"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="#2196F3"
-            android:textColor="#FFFFFF" />
+                    <Spinner
+                        android:id="@+id/spinnerGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:background="@drawable/input_field_bg"
+                        android:padding="12dp" />
 
+                    <!-- Date of Birth -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Date of Birth"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etDOB"
+                        style="@style/InputField"
+                        android:hint="Select date of birth"
+                        android:focusable="false"
+                        android:drawableEnd="@android:drawable/ic_menu_my_calendar" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Location Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location Details"
+                        style="@style/SectionHeader"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/primary" />
+
+                    <!-- City -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="City or Area"
+                        style="@style/TextLabel"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etLocation"
+                        style="@style/InputField"
+                        android:hint="Enter your city or area" />
+
+                    <!-- State -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="State"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etState"
+                        style="@style/InputField"
+                        android:hint="Enter your state" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Crisis Information Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Crisis Information"
+                        style="@style/SectionHeader"
+                        android:layout_marginTop="0dp"
+                        android:textColor="@color/primary" />
+
+                    <!-- Crisis Type -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Type of Crisis"
+                        style="@style/TextLabel"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etCrisisType"
+                        style="@style/InputField"
+                        android:hint="Describe your crisis situation" />
+
+                    <!-- Recovery Stage -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Recovery Stage"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etRecoveryStage"
+                        style="@style/InputField"
+                        android:hint="Current recovery stage" />
+
+                    <!-- Occupation -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Occupation"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etOccupation"
+                        style="@style/InputField"
+                        android:hint="Your occupation" />
+
+                    <!-- Medical Needs -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Medical Needs / Disabilities"
+                        style="@style/TextLabel"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="6dp" />
+
+                    <EditText
+                        android:id="@+id/etMedicalNeeds"
+                        style="@style/InputField"
+                        android:hint="Any medical needs or disabilities"
+                        android:minHeight="80dp"
+                        android:gravity="top"
+                        android:inputType="textMultiLine" />
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Urgent Help Checkbox -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="4dp"
+                android:layout_marginBottom="24dp"
+                app:cardCornerRadius="16dp"
+                app:cardBackgroundColor="#FFF3E0">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="16dp"
+                    android:gravity="center_vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkUrgentHelp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/warning" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I need urgent help"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/warning" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Check this if you require immediate assistance"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_secondary" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Save Button -->
+            <Button
+                android:id="@+id/btnSaveProfile"
+                style="@style/PrimaryButton"
+                android:text="Save Profile"
+                android:layout_marginBottom="24dp" />
+
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

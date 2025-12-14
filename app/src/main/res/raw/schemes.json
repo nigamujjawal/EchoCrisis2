@@ -1,0 +1,62 @@
+[
+  {
+    "title": "National Mental Health Programme (NMHP)",
+    "description": "Provides affordable and accessible mental health care services through District Mental Health Programmes.",
+    "eligibility": "All Indian citizens in need of mental health support.",
+    "link": "https://main.mohfw.gov.in"
+  },
+  {
+    "title": "Kiran Mental Health Helpline",
+    "description": "24x7 toll-free mental health rehabilitation helpline offering emotional support and suicide prevention counselling.",
+    "eligibility": "Open to all individuals in emotional distress.",
+    "link": "https://www.mohfw.gov.in/pdf/KiranMentalHealthHelpline.pdf"
+  },
+  {
+    "title": "Pradhan Mantri Jan Arogya Yojana (PMJAY) - Mental Health Coverage",
+    "description": "Provides free treatment for selected mental health conditions under Ayushman Bharat scheme.",
+    "eligibility": "Poor and vulnerable families as per SECC data.",
+    "link": "https://pmjay.gov.in"
+  },
+  {
+    "title": "Disaster Relief Assistance - NDMA",
+    "description": "Government-provided financial and rehabilitation support for people affected by natural disasters.",
+    "eligibility": "Individuals and families affected by disasters as identified by local authorities.",
+    "link": "https://ndma.gov.in"
+  },
+  {
+    "title": "One Stop Centres (OSC) Scheme",
+    "description": "Provides integrated support and assistance to women affected by violence, including counselling and medical aid.",
+    "eligibility": "Women affected by violence or in distress.",
+    "link": "https://wcd.nic.in"
+  },
+  {
+    "title": "Manodarpan Initiative",
+    "description": "Psychosocial support for students, teachers, and families during COVID-19 and other crises.",
+    "eligibility": "All students, parents, and teachers.",
+    "link": "https://manodarpan.education.gov.in"
+  },
+  {
+    "title": "Saksham - Disability Rehabilitation Scheme",
+    "description": "Financial assistance for NGOs providing mental and physical rehabilitation services.",
+    "eligibility": "Registered NGOs working in the disability sector.",
+    "link": "https://thenationaltrust.gov.in"
+  },
+  {
+    "title": "State-Level Psychological Counselling Schemes",
+    "description": "Various state governments offer free counselling services through mental health centres.",
+    "eligibility": "Residents of the respective state.",
+    "link": "https://www.nhp.gov.in"
+  },
+  {
+    "title": "Helpline 112 - Emergency Support",
+    "description": "Pan-India emergency helpline number for police, medical, fire, and disaster services.",
+    "eligibility": "Available to all citizens in emergencies.",
+    "link": "https://mha.gov.in"
+  },
+  {
+    "title": "Childline 1098",
+    "description": "24x7 helpline for children in distress offering rescue, counselling, and shelter support.",
+    "eligibility": "All children in distress or at risk.",
+    "link": "https://childlineindia.org"
+  }
+]

@@ -1,5 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Primary Colors - Deep Blue (Trust & Safety) -->
+    <color name="primary">#1A237E</color>
+    <color name="primary_dark">#0D1442</color>
+    <color name="primary_light">#3949AB</color>
+    <color name="primary_variant">#283593</color>
+    
+    <!-- Accent/Emergency Colors - Coral Red -->
+    <color name="accent">#E53935</color>
+    <color name="accent_dark">#B71C1C</color>
+    <color name="accent_light">#EF5350</color>
+    <color name="sos_red">#D32F2F</color>
+    <color name="sos_red_dark">#B71C1C</color>
+    
+    <!-- Secondary Colors -->
+    <color name="secondary">#00BCD4</color>
+    <color name="secondary_dark">#00838F</color>
+    <color name="secondary_light">#4DD0E1</color>
+    
+    <!-- Surface & Background -->
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_variant">#F8F9FA</color>
+    <color name="background">#F5F5F5</color>
+    <color name="card_background">#FFFFFF</color>
+    <color name="overlay_dark">#80000000</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_hint">#9E9E9E</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_on_accent">#FFFFFF</color>
+    <color name="text_link">#1976D2</color>
+    
+    <!-- Input Field Colors -->
+    <color name="input_background">#F5F7FA</color>
+    <color name="input_stroke">#E0E0E0</color>
+    <color name="input_stroke_focused">#1A237E</color>
+    <color name="input_icon">#9E9E9E</color>
+    
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="warning">#FF9800</color>
+    <color name="error">#F44336</color>
+    <color name="info">#2196F3</color>
+    
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#1A237E</color>
+    <color name="gradient_end">#3949AB</color>
+    <color name="gradient_sos_start">#E53935</color>
+    <color name="gradient_sos_end">#D32F2F</color>
+    
+    <!-- Card & Shadow -->
+    <color name="card_shadow">#1A000000</color>
+    <color name="divider">#E0E0E0</color>
+    
+    <!-- Feature Card Colors -->
+    <color name="feature_mental">#7C4DFF</color>
+    <color name="feature_legal">#00BFA5</color>
+    <color name="feature_scheme">#FF6D00</color>
+    <color name="feature_shelter">#448AFF</color>
+    <color name="feature_contacts">#FF5722</color>
+    
+    <!-- Legacy colors for compatibility -->
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

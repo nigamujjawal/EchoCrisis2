@@ -45,7 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(this, "Registration failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(this, "Registration failed: " + task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
                         }
                     });
         });

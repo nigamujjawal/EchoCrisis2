@@ -70,6 +70,9 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.firebase.firestore)
     implementation(libs.firebase.auth)
+    
+    // Firebase App Check (debug) - silences AppCheck warning
+    implementation("com.google.firebase:firebase-appcheck-debug:17.1.1")
 
     // NEW DEPENDENCIES FOR ECOCRISIS APP
 
@@ -130,6 +133,9 @@ dependencies {
     implementation(libs.vision.common)
     implementation(libs.play.services.mlkit.text.recognition.common)
     implementation(libs.play.services.mlkit.text.recognition)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
 
     // Testing dependencies
     testImplementation(libs.junit)

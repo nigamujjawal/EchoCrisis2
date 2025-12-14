@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#FFF8E1">
+
+    <Button
+        android:id="@+id/btnHelplines"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📞 Emergency Helplines"
+        android:textSize="18sp"
+        android:padding="15dp"
+        android:backgroundTint="#E53935"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="15dp"/>
+
+    <Button
+        android:id="@+id/btnAmbulance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚑 Ambulance Services"
+        android:textSize="18sp"
+        android:padding="15dp"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="15dp"/>
+
+    <Button
+        android:id="@+id/btnOnlineDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="💻 Online Doctor Consultation"
+        android:textSize="18sp"
+        android:padding="15dp"
+        android:backgroundTint="#1976D2"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="15dp"/>
+
+    <Button
+        android:id="@+id/btnHospitalLocator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🏥 Find Nearby Hospitals"
+        android:textSize="18sp"
+        android:padding="15dp"
+        android:backgroundTint="#388E3C"
+        android:textColor="#FFFFFF"
+        android:layout_marginBottom="15dp"/>
+
+</LinearLayout>

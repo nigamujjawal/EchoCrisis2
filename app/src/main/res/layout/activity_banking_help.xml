@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#FFFBEA">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/tvHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/banking_help_support"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#2E7D32"
+            android:gravity="center"
+            android:padding="8dp" />
+
+        <!-- Guides Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/simple_guides"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#444"
+            android:paddingTop="8dp" />
+
+        <!-- Jan Dhan Account Guide -->
+        <LinearLayout
+            android:id="@+id/btnJanDhan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_account_foreground"
+                android:contentDescription="Jan Dhan Account" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Open a Jan Dhan Account"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- Aadhaar Linking Guide -->
+        <LinearLayout
+            android:id="@+id/btnAadhaarLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_bank_foreground"
+                android:contentDescription="@string/aadhaar_linking" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/link_aadhaar_with_bank_account"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- UPI Setup Guide -->
+        <LinearLayout
+            android:id="@+id/btnUPISetup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_upi_foreground"
+                android:contentDescription="@string/upi_setup" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/set_up_upi_receive_relief_payments"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- Location Helpers -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/locate_nearest"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#444"
+            android:paddingTop="16dp" />
+
+        <!-- ATM Locator -->
+        <LinearLayout
+            android:id="@+id/btnATMLocator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_atm_foreground"
+                android:contentDescription="ATM Locator" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Find Nearest ATM"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- Bank Mitra Locator -->
+        <LinearLayout
+            android:id="@+id/btnBankMitra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_agent_foreground"
+                android:contentDescription="@string/bank_mitra" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/find_nearest_bank_mitra"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- CSC Locator -->
+        <LinearLayout
+            android:id="@+id/btnCSC"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_csc_foreground"
+                android:contentDescription="@string/csc_locator" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/find_nearest_csc_common_service_centre"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+        </LinearLayout>
+
+        <!-- Loan Assistance -->
+        <LinearLayout
+            android:id="@+id/btnLoanHelp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/card_bg"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_loan_foreground"
+                android:contentDescription="loan_assistance" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/loan_assistance_and_disaster_relief_loans"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingStart="12dp" />
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+</ScrollView>

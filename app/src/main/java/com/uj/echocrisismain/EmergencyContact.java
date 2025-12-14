@@ -3,13 +3,17 @@ package com.uj.echocrisismain;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class EmergencyContact {
     private String name;
     private String phone;
     private String relationship;
 
     // Required empty constructor (for Firestore deserialization)
-    public EmergencyContact() {}
+    public EmergencyContact() {
+    }
 
     public EmergencyContact(String name, String phone, String relationship) {
         this.name = name;
@@ -36,12 +40,44 @@ public class EmergencyContact {
     }
 
     // Getters and Setters
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public String getName() {
+        return name;
+    }
 
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public String getRelationship() { return relationship; }
-    public void setRelationship(String relationship) { this.relationship = relationship; }
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getRelationship() {
+        return relationship;
+    }
+
+    public void setRelationship(String relationship) {
+        this.relationship = relationship;
+    }
+
+    // JSON serialization for SharedPreferences
+    public JSONObject toJson() throws JSONException {
+        JSONObject json = new JSONObject();
+        json.put("name", name != null ? name : "");
+        json.put("phone", phone != null ? phone : "");
+        json.put("relationship", relationship != null ? relationship : "");
+        return json;
+    }
+
+    // JSON deserialization
+    public static EmergencyContact fromJson(JSONObject json) throws JSONException {
+        return new EmergencyContact(
+                json.optString("name", ""),
+                json.optString("phone", ""),
+                json.optString("relationship", ""));
+    }
 }
