@@ -48,13 +48,21 @@ public class InsuranceClaimActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insurance_claim);
+        android.util.Log.d("InsuranceClaim", "Activity Starting...");
+        try {
+            setContentView(R.layout.activity_insurance_claim);
+            android.util.Log.d("InsuranceClaim", "Layout Set Successfully");
+        } catch (Exception e) {
+            android.util.Log.e("InsuranceClaim", "Layout Error: " + e.getMessage());
+            e.printStackTrace();
+        }
 
         initializeViews();
         setupClickListeners();
     }
 
     private void initializeViews() {
+        android.util.Log.d("InsuranceClaim", "Allocating Views...");
         spinnerInsuranceType = findViewById(R.id.spinnerInsuranceType);
         editTextDescription = findViewById(R.id.editTextDescription);
     }
@@ -71,7 +79,7 @@ public class InsuranceClaimActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
+            @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         switch (requestCode) {
@@ -94,7 +102,7 @@ public class InsuranceClaimActivity extends AppCompatActivity {
 
     /*** -------- PHOTO UPLOAD / OCR -------- ***/
     private void showImageOptions() {
-        String[] options = {"Capture from Camera", "Upload from Gallery"};
+        String[] options = { "Capture from Camera", "Upload from Gallery" };
 
         new AlertDialog.Builder(this)
                 .setTitle("Select Image")
@@ -109,9 +117,8 @@ public class InsuranceClaimActivity extends AppCompatActivity {
     }
 
     private void checkCameraPermissionAndCapture() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA},
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.CAMERA },
                     REQUEST_CAMERA_PERMISSION);
         } else {
             captureImage();
@@ -246,10 +253,10 @@ public class InsuranceClaimActivity extends AppCompatActivity {
             // Android 10+ doesn't need WRITE_EXTERNAL_STORAGE for app-specific directories
             downloadTemplateFile();
         } else {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this,
-                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE },
                         REQUEST_STORAGE_PERMISSION);
             } else {
                 downloadTemplateFile();

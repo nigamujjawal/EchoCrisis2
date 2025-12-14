@@ -1,52 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".InsuranceClaimActivity">
 
-    <LinearLayout android:layout_width="match_parent"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
 
-        <!-- Insurance Type Spinner -->
-        <Spinner
-            android:id="@+id/spinnerInsuranceType"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@drawable/gradient_bg_dark"
+            app:title="Insurance Claim Assistant"
+            app:titleTextColor="@android:color/white" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:entries="@array/insurance_types" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Claim Description -->
-        <EditText
-            android:id="@+id/editTextDescription"
-            android:hint="@string/describe_the_damage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:minLines="4"
-            android:gravity="top" />
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CardStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp">
 
-        <!-- Upload Button -->
-        <Button
-            android:id="@+id/buttonUploadPhotos"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/upload_photos_receipts" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
 
-        <!-- Claim Letter Template -->
-        <Button
-            android:id="@+id/buttonDownloadTemplate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/download_claim_letter_template" />
+                    <TextView
+                        style="@style/SectionHeader"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="New Claim Details" />
+                        
+                    <TextView
+                        style="@style/CaptionText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Select the type of insurance claim you are filing." />
 
-        <!-- Submit Claim -->
-        <Button
-            android:id="@+id/buttonSubmitClaim"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/submit_claim" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/input_field_bg"
+                        android:orientation="horizontal">
 
-    </LinearLayout>
-</ScrollView>
+                        <Spinner
+                            android:id="@+id/spinnerInsuranceType"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:entries="@array/insurance_types"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp" />
+                    </LinearLayout>
+
+                    <TextView
+                        style="@style/BodyText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="Description of Damage / Incident"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/editTextDescription"
+                        style="@style/InputField"
+                        android:minLines="5"
+                        android:layout_height="wrap_content"
+                        android:gravity="top|start"
+                        android:hint="Describe what happened, date, time, and location..."
+                        android:inputType="textMultiLine"
+                        android:padding="12dp" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                style="@style/SectionHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="12dp"
+                android:text="Evidence &amp; Tools" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:alignmentMode="alignMargins"
+                android:columnOrderPreserved="false"
+                android:useDefaultMargins="true">
+
+                <!-- Upload Photos Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonUploadPhotos"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="Upload / Scan\nPhotos (OCR)"
+                    android:textAlignment="center"
+                    app:icon="@drawable/ic_insurance"
+                    app:iconGravity="textTop"
+                    app:strokeColor="#1A237E"
+                    app:strokeWidth="1dp" />
+
+                <!-- Download Template Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonDownloadTemplate"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="4dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:text="Download\nClaim Letter"
+                    android:textAlignment="center"
+                    app:icon="@drawable/ic_legal"
+                    app:iconGravity="textTop"
+                    app:strokeColor="#1A237E"
+                    app:strokeWidth="1dp" />
+
+            </GridLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonSubmitClaim"
+                style="@style/PrimaryButton"
+                android:layout_marginTop="24dp"
+                android:text="Submit Claim Request" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
