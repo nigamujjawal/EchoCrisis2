@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 # 🔴 YOUR API KEY
-GEMINI_API_KEY = "AIzaSyAj3US_xXyZ7NFoAQtse_dWTRZzePAGYws"
+GEMINI_API_KEY = "AIzaSyCUPQyVA_ylED1jLlA7eOeZFK6PXuntomw"
 
 # Configure Gemini
 model = None

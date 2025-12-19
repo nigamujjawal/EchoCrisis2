@@ -4,13 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.widget.Button;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class FinancialHelpActivity extends AppCompatActivity {
 
-    Button btnGoonj, btnGiveIndia, btnSEEDS, btnKetto, btnMilaap, btnImpactGuru;
+    View btnGoonj, btnGiveIndia, btnSEEDS, btnKetto, btnMilaap, btnImpactGuru;
 
     @SuppressLint("MissingInflatedId")
     @Override

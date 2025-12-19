@@ -42,7 +42,7 @@ public class ChatActivity extends AppCompatActivity {
     public static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
     // Replace with your server's local IP (same network as Android device)
-    private final String SERVER_URL = "http://192.168.29.242:5000/chat";
+    private final String SERVER_URL = "http://10.136.60.246:5000/chat";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +82,8 @@ public class ChatActivity extends AppCompatActivity {
 
             RequestBody body = RequestBody.create(json.toString(), JSON);
 
+            android.util.Log.d("ChatActivity", "Sending to: " + SERVER_URL);
+
             Request request = new Request.Builder()
                     .url(SERVER_URL)
                     .post(body)
@@ -90,8 +92,9 @@ public class ChatActivity extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> Toast.makeText(ChatActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_LONG)
-                            .show());
+                    String errorMsg = "Connection Failed: " + e.getLocalizedMessage();
+                    android.util.Log.e("ChatActivity", errorMsg, e);
+                    runOnUiThread(() -> Toast.makeText(ChatActivity.this, errorMsg, Toast.LENGTH_LONG).show());
                 }
 
                 @Override
@@ -104,16 +107,19 @@ public class ChatActivity extends AppCompatActivity {
 
                             runOnUiThread(() -> addMessage(reply, false));
                         } catch (Exception e) {
-                            runOnUiThread(() -> addMessage("Parsing error.", false));
+                            runOnUiThread(() -> addMessage("Parsing error: " + e.getMessage(), false));
                         }
                     } else {
-                        runOnUiThread(() -> addMessage("Failed: " + response.code(), false));
+                        String failMsg = "Server Error: " + response.code();
+                        android.util.Log.e("ChatActivity", failMsg);
+                        runOnUiThread(() -> addMessage(failMsg, false));
                     }
                 }
             });
 
         } catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(this, "Setup Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }
